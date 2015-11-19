@@ -1,0 +1,24 @@
+input#user_to_msg_input {
+	display: block;
+	width: 300px;
+}
+
+textarea#msg_input {
+	width: 300px;
+}
+
+#chat_input_form {
+	margin: 30px 5px;
+}
+
+div#output_container {
+ border: 1px solid black;
+	width: calc(50vw - 10px);
+	float: left;
+}
+
+div#user_list_container {
+	border: 1px solid black;
+	float: right;
+	width: calc(50vw - 10px);
+}

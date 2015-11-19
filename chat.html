@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+   <script src="script.js"></script>
+	<script src="messageHandling.js"></script>
+	<script src="userManagement.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+<h1>Chat Application</h1>
+Menu:
+<select id='menu'>
+    <option value="select">Select</option>
+    <option value="signin">Sign In</option>
+    <option value="join">Join</option>
+    <option value="unsubscribe">Unsubscribe</option>
+    <option value="signout"> Sign Out</option>
+</select>
+<br>
+<br>
+
+<div id='blanket'
+     style='
+            background-color:LightGray; 
+            position:absolute; top:0px; left:0px; 
+            width:100%; height:100%; 
+            z-index:100; 
+            opacity: 0.5;
+            display:none'
+        >
+</div>
+
+<div id='signinbox'
+     style="
+            position:absolute; top:100px; left: 100px;
+            width:400px; height:200px; 
+            border: 1px solid black;
+            z-index:200; 
+            display:none;
+            background-color: LightCyan;"
+        >
+    <form>
+        <br>
+        <h2 style='text-align: center'>Sign In</h2>
+        <br>
+        Username: <input id='signin_username' type='text' name='username'> <br>
+        Password: <input id='signin_password' type='password' name='password'> <br>
+        <br>
+        <button id='cancel_signin' type='button'>Cancel</button>
+        <input id='submit_signin' type='button' value='Submit' onclick='hide_popup_box(); signin_click();'>
+    </form>
+</div>
+
+<div id='joinbox'
+     style="
+            position:absolute; top:100px; left: 100px;
+            width:400px; height:200px; 
+            border: 1px solid black;
+            z-index:200; 
+            display:none;
+            background-color: LightCyan;"
+        >
+    <form>
+        <br>
+        <h2 style='text-align: center'>Join</h2>
+        <br>
+        Username: <input id='join_username' type='text' name='username'> <br>
+        Password: <input id='join_password' type='password' name='password'> <br>
+        <br>
+        <button id='cancel_join' type='button'>Cancel</button>
+        <input id='submit_join' type='button' value='Submit' onclick='hide_popup_box(); join_click();'>
+    </form>
+</div>
+
+	<form id="chat_input_form">
+		<input id="user_to_msg_input" type="text" placeholder="User to message. Leave blank for broadcast.">
+		<textarea id="msg_input" rows="3"></textarea>
+		<button id="btn_send_msg">Send</button>
+	</form>
+
+<div id="output_container">
+	Message sent from server:<br>
+	<div id='output'>
+	</div>
+</div>
+
+<div id="user_list_container">
+	Logged in users:
+	<div id="user_list">
+		NOT SIGNED IN
+	</div>
+</div>
+
+<div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "seminar7",
+  "description": "",
+  "main": "chat.html",
+  "authors": [
+    "Steve <stevenlyall@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "seminar7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "chatEchoServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "client-manager": "0.0.2",
+    "mongodb": "^2.0.47",
+    "ws": "^0.8.0"
+  }
+}
