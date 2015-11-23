@@ -61,7 +61,7 @@ exports.signIn = function(client_socket, user, password) {
 				clientsManager.addClient(client_socket, user);
 				acknowlegementManager.send(client_socket, 'sign in', user, 'success');
 				console.log('login succeeded');
-				//clientsManager.sendUsersListUpdates();
+				clientsManager.sendUsersListUpdates();
 			}
 			else {
 				console.log('login failed');
@@ -79,7 +79,7 @@ exports.signOut = function(client_socket, user) {
 	else {
 		console.log('sign out succeeded ' + user);
 		clientsManager.removeClient(client_socket, user);
-		//clientsManager.sendUsersListUpdates();
+		clientsManager.sendUsersListUpdates();
 		acknowlegementManager.send(client_socket, 'sign out', user, 'success');
 	}
 };

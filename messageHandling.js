@@ -5,7 +5,7 @@ var messageInHandler = {
 		var listDisplay = document.getElementById('user_list');
 		listDisplay.innerHTML = "";
 		message.list.forEach(function(current, index, array) {
-			listDisplay.innerHTML += current;
+			listDisplay.innerHTML += current + "<br>";
 		})
 	},
 

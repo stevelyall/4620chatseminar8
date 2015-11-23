@@ -17,7 +17,7 @@ exports.sendMessage = function(message_obj) {
 		console.log('message from ' + message_obj.fromUser + ' to ' + message_obj.toUser);
 		send_socket.send(JSON.stringify(message_obj));
 		console.log('Sent');
-		//clientsManager.sendUsersListUpdates();
+		clientsManager.sendUsersListUpdates();
 	}
 	catch (e){
 		console.log('ERROR SENDING MESSAGE');
@@ -34,7 +34,7 @@ exports.sendBroadcast = function(message_obj) {
 				console.log('sending broadcast from:' + message_obj.fromUser + " msg: " + message_obj.text);
 				clients[client].send(JSON.stringify(message_obj));
 				console.log('sent');
-				//clientsManager.sendUsersListUpdates();
+				clientsManager.sendUsersListUpdates();
 			}
 			catch (e) {
 				console.log("ERROR SENDING BROADCAST");
