@@ -7,8 +7,8 @@ window.addEventListener('load', function () {
 var ws;
 function connect() {
 	if ("WebSocket" in window) {
-		//ws = new WebSocket("ws://cs.tru.ca:8841/chat");
-		ws = new WebSocket("ws://localhost:8841/chat", "chat");
+		ws = new WebSocket("ws://cs.tru.ca:8841/chat");
+		//ws = new WebSocket("ws://localhost:8841/chat", "chat");
 
 		ws.onopen = function () {
 			console.log('open');
