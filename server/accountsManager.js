@@ -1,7 +1,9 @@
 var MongoClient = require('mongodb').MongoClient;
 var dbConnection = require('./chat_db');
 var acknowlegementManager= require('./acknowledgementManager');
+
 var clientsManager = require('./clientsManager');
+
 
 exports.join = function (client_socket, user, password) {
 

@@ -9,11 +9,13 @@ var messageInHandler = {
 		})
 	},
 
-	//'oneToOneMessageIn' : function(message) {
-	//},
-	//
-	//'broadcastMessageIn' : function(message) {
-	//},
+	'oneToOneMessageIn' : function(message) {
+		printOutput("Message from " + message.fromUser + ": " + message.text);
+	},
+
+	'broadcastMessageIn' : function(message) {
+		printOutput("Broadcast from " + message.fromUser + ": " + message.text);
+	},
 
 	'acknowledgementIn' : function (message) {
 		// join successful

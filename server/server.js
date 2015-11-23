@@ -1,7 +1,6 @@
 var crypto = require('crypto');
 
 var accountsManager = require('./accountsManager');
-var cm = require('./clientsManager');
 var messageManager = require('./messageManager');
 var chatEchoServer = require('ws').Server,
     ws_server = new chatEchoServer({port: 8841});

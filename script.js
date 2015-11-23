@@ -4,15 +4,11 @@ window.addEventListener('load', function () {
 	connect();
 });
 
-window.onbeforeunload = function(){ console.log('unload??'); console.log(ws);};
-
-// TODO disconnects after message recieved?
-
 var ws;
 function connect() {
 	if ("WebSocket" in window) {
 		//ws = new WebSocket("ws://cs.tru.ca:8841/chat");
-		ws = new WebSocket("ws://localhost:8841/chat");
+		ws = new WebSocket("ws://localhost:8841/chat", "chat");
 
 		ws.onopen = function () {
 			console.log('open');
@@ -36,12 +32,11 @@ function connect() {
 
 			//is broadcast
 			if (message.command == 'broadcasting') {
-				printOutput("Broadcast from " + message.fromUser + ": " + message.text);
+				messageInHandler.broadcastMessageIn(message);
 			}
 			//is one to one
 			if (message.command == 'message') {
-				printOutput("Message from " + message.fromUser + ": " + message.text);
-
+				messageInHandler.oneToOneMessageIn(message);
 			}
 
 		};

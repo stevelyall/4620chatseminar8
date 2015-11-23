@@ -1,41 +1,51 @@
-var sockets = [];
+var sockets = {};
 
 exports.addClient = function(client_socket, username) {
-	client_socket.username = username;
-	sockets.push(client_socket);
+	sockets[username] = client_socket;
 };
 
 exports.removeClient = function(client_socket, username) {
-	sockets.forEach(function (currentValue, index, array) {
-		if (currentValue.username == username) {
-			console.log("Client " + currentValue.username + " removed");
-			sockets.splice(index,1);
-
-		}
-	});
+	sockets[username] = undefined;
 };
 
+function size() {
+	var size = 0;
+	for (var i in sockets) {
+		size++;
+	}
+	return size;
+}
+
+// TODO
 exports.sendUsersListUpdates = function () {
 	checkForAndRemoveDeadClients();
-	console.log(sockets.length + ' clients connected. ');
-	var usernames = [];
-
-	sockets.forEach(function(currentValue) {
-		usernames.push(currentValue.username);
-	});
-
-	var message = {
-		'command' : 'user list update',
-		'list' : usernames
-	};
-
-	if (sockets.length == 0) {
-		console.log('tried sending user list update, no clients connected');
-	}
-	sockets.forEach(function(currentValue) {
-		currentValue.send(JSON.stringify(message));
-	});
-	console.log("Sent user list updates");
+	//console.log(sockets.size + ' clients connected. ');
+	//
+	//var message = {
+	//	'command' : 'user list update',
+	//	'list' : []
+	//};
+	//
+	//for (var socket in sockets) {
+	//	if (socket != undefined) {
+	//		message.list.push(socket);
+	//	}
+	//}
+	//
+	//if (sockets.length == 0) {
+	//	console.log('tried sending user list update, no clients connected');
+	//}
+	//
+	//for (socket in sockets) {
+	//	if (socket == undefined || !sockets.hasOwnProperty(socket)) {
+	//		continue;
+	//	}
+	//	console.log(socket);
+	//	if (socket != undefined) {
+	//		socket.send(JSON.stringify(message));
+	//	}
+	//}
+	//console.log("Sent user list updates");
 };
 
 exports.getAllConnectedClients = function() {
@@ -45,19 +55,25 @@ exports.getAllConnectedClients = function() {
 
 exports.getClientForUser = function(user) {
 	checkForAndRemoveDeadClients();
-	for (var i = 0; i<sockets.length; i++) {
-		if (sockets[i].username == user) {
-			return sockets[i];
-		}
+
+	var result = sockets[user];
+	if (result == undefined) {
+		console.log("couldn't find client for user " + user);
 	}
-	console.log("couldn't find client for user " + user);
+	else {
+		return result;
+	}
 };
 
 function checkForAndRemoveDeadClients() {
-	sockets.forEach(function (currentValue, index, array) {
-		if (currentValue.readyState != 1) {
-			console.log('removing dead client ' + currentValue.username);
-			array.splice(index,1);
-		}
-	})
+	// TODO
+	//for (var i = 0; i < size(); i++) {
+	//	if (sockets[i]== undefined) {
+	//		continue;
+	//	}
+	//	if (sockets[i].readyState != 1) {
+	//		console.log('removing dead client ' + index);
+	//		sockets[i] = undefined;
+	//	}
+	//}
 }
