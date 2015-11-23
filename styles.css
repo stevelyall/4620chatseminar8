@@ -19,6 +19,19 @@ div#output_container {
 
 div#user_list_container {
 	border: 1px solid black;
-	float: right;
-	width: calc(50vw - 10px);
+	width: 20vw;
+	position: fixed;
+	right: 20px;
+	top: 20px;
+}
+
+#inputarea {
+	width: 30vw;
+	margin-bottom: 20px;
+}
+
+#inputarea form {
+	width: 20vw;
+	display: inline;
+
 }

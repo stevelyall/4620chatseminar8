@@ -135,6 +135,13 @@ function setEventListeners() {
 			console.log('sending message to ' + message.toUser + ":");
 			console.log(message);
 		}
+		clearInputs();
 
 	});
+
+	function clearInputs() {
+		document.getElementById("user_to_msg_input").value = "";
+		document.getElementById("msg_input").value = "";
+
+	}
 }
